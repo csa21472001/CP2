@@ -1,12 +1,13 @@
 package skypro.com.example.CP2_demo.service;
 
+import org.springframework.stereotype.Service;
 import skypro.com.example.CP2_demo.dto.Question;
+import skypro.com.example.CP2_demo.exceptions.ExceedingQuestionsNumber;
 
-import java.util.Collection;
-import java.util.Random;
+import java.util.*;
 
+@Service
 public class ExaminerServiceImpl implements ExaminerService {
-    Random random = new Random();
     QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
@@ -15,6 +16,20 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestions(int amount) {
-        return null;
+        if (amount > (questionService.getCounter()+1)) {
+            throw new ExceedingQuestionsNumber();
+        }
+        List<Question> questionSet = new ArrayList<>();
+        Question question;
+        for (int i = 0; i < amount; i++) {
+            question = questionService.getRandomQuestion();
+            if (questionSet.contains(question)) {
+                i--;
+                continue;
+//                questionSet.set(i,null) ;
+            }
+            questionSet.add(question);
+        }
+        return questionSet;
     }
 }
