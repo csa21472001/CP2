@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import static org.mockito.Mockito.when;
 
 
@@ -29,6 +30,8 @@ class ExaminerServiceImplTest {
     Question qwst3 = new Question("Как дела?", "Вашими молитвами.");
     Question qwst4 = new Question("Как дела?", "Мы знакомы?");
     Question qwst5 = new Question("Как дела?", "Дела у прокурора.");
+
+    @Mock
     Collection<Question> questions;
 
     @BeforeEach
@@ -38,24 +41,15 @@ class ExaminerServiceImplTest {
     @Test
     void getQuestions_gettingAllQuestions_returnAllQuestions() {
         when(service.getAll()).thenReturn(questions);
+        when(service.getRandomQuestion()).thenReturn(qwst1, qwst2, qwst3, qwst4, qwst5);
         Collection<Question> result = underTest.getQuestions(5);
         assertEquals(questions, result);
     }
     @Test
     void getQuestions_employeeNotFound_returnThrowException() {
     int numberOfQuestions = 6;
-    when(service.getAll()).thenReturn(questions);
     assertThrows(ExceedingQuestionsNumber.class,
             () -> underTest.getQuestions(numberOfQuestions));
 }
-
-//    @Test
-//    void getQuestions_checkForRepeatingQuestion() {
-//        when(service.getAll()).thenReturn(questions);
-//        Collection<Question> result = underTest.getQuestions(5);
-//
-//    }
-
-
 
 }

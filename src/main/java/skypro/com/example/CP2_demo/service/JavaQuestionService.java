@@ -9,8 +9,8 @@ import java.util.*;
 
 @Service
 public class JavaQuestionService implements QuestionService {
-    private int counter;
     private final Map <Integer,Question> questions;
+    private int counter = 0 ;
 
     public JavaQuestionService() {
         this.questions = new HashMap<>();;
@@ -47,8 +47,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question getRandomQuestion() {
         Random random = new Random();
-        Integer randomInRange = random.nextInt(counter);
-        return questions.get(randomInRange);
+        return questions.get(random.nextInt(questions.size()));
     }
 
 
@@ -64,10 +63,6 @@ public class JavaQuestionService implements QuestionService {
         for (Integer key : keysToRemove) {
             map.remove(key);
         }
-    }
-    @Override
-    public int getCounter() {
-        return counter;
     }
 
 }

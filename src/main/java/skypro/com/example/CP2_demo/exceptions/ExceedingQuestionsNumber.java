@@ -8,19 +8,19 @@ public class ExceedingQuestionsNumber extends RuntimeException {
     public ExceedingQuestionsNumber() {
     }
 
-//    public ExceedingQuestionsNumber(String message) {
-//        super(message);
-//    }
-//
-//    public ExceedingQuestionsNumber(String message, Throwable cause) {
-//        super(message, cause);
-//    }
-//
-//    public ExceedingQuestionsNumber(Throwable cause) {
-//        super(cause);
-//    }
-//
-//    public ExceedingQuestionsNumber(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
-//        super(message, cause, enableSuppression, writableStackTrace);
-//    }
+    public ExceedingQuestionsNumber(String message) {
+        super(message);
+    }
+
+    public ExceedingQuestionsNumber(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public ExceedingQuestionsNumber(Throwable cause) {
+        super(cause);
+    }
+
+    public ExceedingQuestionsNumber(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
+    }
 }

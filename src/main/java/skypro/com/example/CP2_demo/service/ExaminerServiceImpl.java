@@ -1,5 +1,4 @@
 package skypro.com.example.CP2_demo.service;
-
 import org.springframework.stereotype.Service;
 import skypro.com.example.CP2_demo.dto.Question;
 import skypro.com.example.CP2_demo.exceptions.ExceedingQuestionsNumber;
@@ -8,7 +7,7 @@ import java.util.*;
 
 @Service
 public class ExaminerServiceImpl implements ExaminerService {
-    QuestionService questionService;
+    private  QuestionService questionService;
 
     public ExaminerServiceImpl(QuestionService questionService) {
         this.questionService = questionService;
@@ -16,7 +15,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public Collection<Question> getQuestions(int amount) {
-        if (amount > (questionService.getCounter()+1)) {
+        if (amount > questionService.getAll().size()) {
             throw new ExceedingQuestionsNumber();
         }
         List<Question> questionSet = new ArrayList<>();
