@@ -47,8 +47,7 @@ public class JavaQuestionService implements QuestionService {
     @Override
     public Question getRandomQuestion() {
         Random random = new Random();
-        Integer randomInRange = random.nextInt(counter);
-        return questions.get(randomInRange);
+        return questions.get(random.nextInt(counter));
     }
 
 
@@ -64,10 +63,6 @@ public class JavaQuestionService implements QuestionService {
         for (Integer key : keysToRemove) {
             map.remove(key);
         }
-    }
-    @Override
-    public int getCounter() {
-        return counter;
     }
 
 }

@@ -26,9 +26,6 @@ public class Question {
         Question qwst = (Question) o;
         return  Objects.equals(question, qwst.question) &&
                 Objects.equals(answer, qwst.answer) ;
-//        Question question1 = (Question) o;
-//        return Objects.equals(question, question1.question) &&
-//                Objects.equals(answer, question1.answer);
     }
 
     @Override
